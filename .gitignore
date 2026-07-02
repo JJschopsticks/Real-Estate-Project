@@ -7,6 +7,10 @@ venv/
 .env
 __pycache__/
 *.pyc
+
+# Data
+*.json
+
 # User-specific files
 *.rsuser
 *.suo
