@@ -9,12 +9,12 @@ import time
 # =====================================
 
 MODEL = "claude-sonnet-4-6"
-BATCH_SIZE = 50
+
+BATCH_SIZE = 25
 
 INPUT_FILE = "dfw_single_family_claude_compact.json"
 OUTPUT_FILE = "properties_with_estimates.json"
 
-# Sonnet 4.6 Pricing
 INPUT_COST_PER_MILLION = 3.00
 OUTPUT_COST_PER_MILLION = 15.00
 
@@ -27,7 +27,9 @@ load_dotenv()
 api_key = os.getenv("ANTHROPIC_API_KEY")
 
 if not api_key:
-    raise ValueError("ANTHROPIC_API_KEY not found in .env")
+    raise ValueError(
+        "ANTHROPIC_API_KEY not found in .env"
+    )
 
 client = Anthropic(api_key=api_key)
 
@@ -43,16 +45,15 @@ properties = data["properties"]
 print(f"Loaded {len(properties)} properties")
 
 # =====================================
-# HELPER FUNCTIONS
+# HELPERS
 # =====================================
 
 def chunk_list(items, size):
-    """Split list into batches."""
     for i in range(0, len(items), size):
         yield items[i:i + size]
 
 # =====================================
-# PROCESS PROPERTIES
+# PROCESS
 # =====================================
 
 all_estimates = []
@@ -60,25 +61,28 @@ all_estimates = []
 total_input_tokens = 0
 total_output_tokens = 0
 
-total_batches = (len(properties) + BATCH_SIZE - 1) // BATCH_SIZE
+total_batches = (
+    len(properties) + BATCH_SIZE - 1
+) // BATCH_SIZE
 
 for batch_number, batch in enumerate(
     chunk_list(properties, BATCH_SIZE),
     start=1
 ):
 
-    print("\n" + "=" * 50)
-    print(f"Batch {batch_number}/{total_batches}")
-    print(f"Properties: {len(batch)}")
-    print("=" * 50)
+    print(
+        f"\nProcessing Batch "
+        f"{batch_number}/{total_batches}"
+    )
 
     prompt = f"""
-You are a DFW real estate analyst.
+You are a DFW real estate investment analyst.
 
-All properties are single-family homes.
+All properties are single-family homes located within the Dallas-Fort Worth metro area.
 
-Field definitions:
+Field Definitions
 
+Property Data:
 c = city
 z = zip_code
 b = bedrooms
@@ -89,22 +93,56 @@ yr = year_built
 p = listing_price
 hoa = hoa_fee
 
+Neighborhood Data:
+mi = median_income
+pop = population
+bp = bachelors_pct
+pp = poverty_pct
+oop = owner_occupied_pct
+mhv = median_home_value
+mr = median_rent
+
 For each property estimate:
 
-r = monthly market rent (USD)
+r = estimated monthly market rent (USD)
 conf = confidence score (0-100)
-a = five-year appreciation percentage
+a = estimated five-year appreciation percentage
 v = estimated property value in five years
 
-Requirements:
+Use BOTH property characteristics and neighborhood demographics.
 
-- Use realistic DFW market assumptions.
-- Keep appreciation between 10 and 40 percent.
+Rent estimates should consider:
+- bedrooms
+- bathrooms
+- square footage
+- year built
+- listing price
+- local median rent
+- local median home value
+- local income levels
+
+Appreciation estimates should consider:
+- median income
+- educational attainment
+- poverty rate
+- owner occupancy
+- local home values
+- population
+- city and ZIP location
+- property quality and characteristics
+
+Guidelines:
+
+- Rent estimates should reflect realistic DFW market conditions.
+- Appreciation must be between 5 and 40 percent.
+- Confidence should reflect certainty of the estimate.
+- Return EXACTLY one estimate for every property provided.
+- Do not omit any properties.
+- Use each property id exactly as provided.
 - Return ONLY valid JSON.
 - No markdown.
 - No explanations.
-- No code blocks.
-- Return one result for every property provided.
+- No comments.
 
 Return format:
 
@@ -120,14 +158,15 @@ Return format:
 
 Properties:
 
-{json.dumps(batch)}
+{json.dumps(batch, separators=(",", ":"))}
 """
 
     try:
 
         response = client.messages.create(
             model=MODEL,
-            max_tokens=4000,
+            max_tokens=8000,
+            temperature=0.2,
             messages=[
                 {
                     "role": "user",
@@ -136,34 +175,42 @@ Properties:
             ]
         )
 
-        response_text = response.content[0].text.strip()
+        response_text = (
+            response.content[0].text
+        ).strip()
 
-        batch_results = json.loads(response_text)
+        estimates = json.loads(response_text)
 
-        all_estimates.extend(batch_results)
+        all_estimates.extend(estimates)
 
-        total_input_tokens += response.usage.input_tokens
-        total_output_tokens += response.usage.output_tokens
+        input_tokens = response.usage.input_tokens
+        output_tokens = response.usage.output_tokens
+
+        total_input_tokens += input_tokens
+        total_output_tokens += output_tokens
 
         print(
-            f"Returned {len(batch_results)} estimates"
+            f"Returned "
+            f"{len(estimates)} estimates"
         )
 
         print(
-            f"Input Tokens: {response.usage.input_tokens:,}"
+            f"Input Tokens: "
+            f"{input_tokens:,}"
         )
 
         print(
-            f"Output Tokens: {response.usage.output_tokens:,}"
+            f"Output Tokens: "
+            f"{output_tokens:,}"
         )
 
-        # Small delay to be nice to API
         time.sleep(1)
 
     except Exception as e:
 
-        print(f"\nERROR IN BATCH {batch_number}")
-        print(str(e))
+        print()
+        print("ERROR")
+        print(e)
 
 # =====================================
 # MERGE RESULTS
@@ -178,34 +225,23 @@ final_properties = []
 
 for property_record in properties:
 
+    merged = property_record.copy()
+
     estimate = estimate_lookup.get(
-        property_record["id"],
-        {}
+        property_record["id"]
     )
 
-    final_properties.append({
+    if estimate:
 
-        # Property Info
-        "id": property_record["id"],
-        "city": property_record.get("c"),
-        "zip_code": property_record.get("z"),
-        "bedrooms": property_record.get("b"),
-        "bathrooms": property_record.get("ba"),
-        "square_feet": property_record.get("sq"),
-        "lot_size": property_record.get("lot"),
-        "year_built": property_record.get("yr"),
-        "listing_price": property_record.get("p"),
-        "hoa_fee": property_record.get("hoa"),
+        merged["r"] = estimate.get("r")
+        merged["conf"] = estimate.get("conf")
+        merged["a"] = estimate.get("a")
+        merged["v"] = estimate.get("v")
 
-        # Claude Estimates
-        "rent_estimate": estimate.get("r"),
-        "confidence_score": estimate.get("conf"),
-        "five_year_appreciation_pct": estimate.get("a"),
-        "five_year_value": estimate.get("v")
-    })
+    final_properties.append(merged)
 
 # =====================================
-# SAVE OUTPUT
+# SAVE
 # =====================================
 
 with open(
@@ -213,6 +249,7 @@ with open(
     "w",
     encoding="utf-8"
 ) as f:
+
     json.dump(
         final_properties,
         f,
@@ -220,7 +257,7 @@ with open(
     )
 
 # =====================================
-# COST CALCULATION
+# COSTS
 # =====================================
 
 input_cost = (
@@ -231,7 +268,9 @@ output_cost = (
     total_output_tokens / 1_000_000
 ) * OUTPUT_COST_PER_MILLION
 
-total_cost = input_cost + output_cost
+total_cost = (
+    input_cost + output_cost
+)
 
 # =====================================
 # SUMMARY
@@ -241,16 +280,46 @@ print("\n" + "=" * 60)
 print("PROCESSING COMPLETE")
 print("=" * 60)
 
-print(f"Properties Loaded: {len(properties)}")
-print(f"Estimates Returned: {len(all_estimates)}")
+print(
+    f"Properties Loaded: "
+    f"{len(properties)}"
+)
+
+print(
+    f"Estimates Returned: "
+    f"{len(all_estimates)}"
+)
 
 print("\nTOKEN USAGE")
-print(f"Input Tokens:  {total_input_tokens:,}")
-print(f"Output Tokens: {total_output_tokens:,}")
+
+print(
+    f"Input Tokens:  "
+    f"{total_input_tokens:,}"
+)
+
+print(
+    f"Output Tokens: "
+    f"{total_output_tokens:,}"
+)
 
 print("\nESTIMATED COST")
-print(f"Input Cost:  ${input_cost:.4f}")
-print(f"Output Cost: ${output_cost:.4f}")
-print(f"Total Cost:  ${total_cost:.4f}")
 
-print(f"\nSaved file: {OUTPUT_FILE}")
+print(
+    f"Input Cost:  "
+    f"${input_cost:.4f}"
+)
+
+print(
+    f"Output Cost: "
+    f"${output_cost:.4f}"
+)
+
+print(
+    f"Total Cost:  "
+    f"${total_cost:.4f}"
+)
+
+print(
+    f"\nSaved file: "
+    f"{OUTPUT_FILE}"
+)

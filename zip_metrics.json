@@ -1,0 +1,614 @@
+{
+  "75203": {
+    "median_income": 46989,
+    "population": 15775,
+    "bachelors_pct": 20.22,
+    "poverty_pct": 30.3,
+    "owner_occupied_pct": 37.88,
+    "median_home_value": 159900,
+    "median_rent": 1318
+  },
+  "75215": {
+    "median_income": 45557,
+    "population": 18895,
+    "bachelors_pct": 17.32,
+    "poverty_pct": 26.16,
+    "owner_occupied_pct": 38.18,
+    "median_home_value": 190100,
+    "median_rent": 1294
+  },
+  "75217": {
+    "median_income": 55723,
+    "population": 85028,
+    "bachelors_pct": 6.79,
+    "poverty_pct": 24.21,
+    "owner_occupied_pct": 62.8,
+    "median_home_value": 189200,
+    "median_rent": 1248
+  },
+  "75216": {
+    "median_income": 41386,
+    "population": 55894,
+    "bachelors_pct": 8.43,
+    "poverty_pct": 29.84,
+    "owner_occupied_pct": 55.81,
+    "median_home_value": 159800,
+    "median_rent": 1221
+  },
+  "75229": {
+    "median_income": 121469,
+    "population": 33656,
+    "bachelors_pct": 49.63,
+    "poverty_pct": 9.65,
+    "owner_occupied_pct": 69.39,
+    "median_home_value": 631700,
+    "median_rent": 1609
+  },
+  "75212": {
+    "median_income": 59750,
+    "population": 28259,
+    "bachelors_pct": 17.83,
+    "poverty_pct": 18.5,
+    "owner_occupied_pct": 56.43,
+    "median_home_value": 241700,
+    "median_rent": 1303
+  },
+  "75238": {
+    "median_income": 82019,
+    "population": 33199,
+    "bachelors_pct": 54.36,
+    "poverty_pct": 9.99,
+    "owner_occupied_pct": 50.35,
+    "median_home_value": 568700,
+    "median_rent": 1357
+  },
+  "75241": {
+    "median_income": 53998,
+    "population": 33840,
+    "bachelors_pct": 12.28,
+    "poverty_pct": 22.06,
+    "owner_occupied_pct": 67.52,
+    "median_home_value": 192000,
+    "median_rent": 1378
+  },
+  "75244": {
+    "median_income": 120286,
+    "population": 13389,
+    "bachelors_pct": 69.46,
+    "poverty_pct": 7.59,
+    "owner_occupied_pct": 51.3,
+    "median_home_value": 617800,
+    "median_rent": 1953
+  },
+  "75232": {
+    "median_income": 61847,
+    "population": 32972,
+    "bachelors_pct": 21.18,
+    "poverty_pct": 20.59,
+    "owner_occupied_pct": 69.81,
+    "median_home_value": 220100,
+    "median_rent": 1339
+  },
+  "76179": {
+    "median_income": 107428,
+    "population": 80090,
+    "bachelors_pct": 30.52,
+    "poverty_pct": 6.54,
+    "owner_occupied_pct": 79.11,
+    "median_home_value": 330300,
+    "median_rent": 1861
+  },
+  "76104": {
+    "median_income": 61658,
+    "population": 20443,
+    "bachelors_pct": 19.97,
+    "poverty_pct": 30.14,
+    "owner_occupied_pct": 36.92,
+    "median_home_value": 162700,
+    "median_rent": 1447
+  },
+  "76135": {
+    "median_income": 74621,
+    "population": 19445,
+    "bachelors_pct": 20.44,
+    "poverty_pct": 13.2,
+    "owner_occupied_pct": 60.9,
+    "median_home_value": 275100,
+    "median_rent": 1326
+  },
+  "76120": {
+    "median_income": 80922,
+    "population": 21102,
+    "bachelors_pct": 31.74,
+    "poverty_pct": 13.27,
+    "owner_occupied_pct": 52.82,
+    "median_home_value": 306700,
+    "median_rent": 1395
+  },
+  "76102": {
+    "median_income": 75859,
+    "population": 11895,
+    "bachelors_pct": 38.53,
+    "poverty_pct": 19.7,
+    "owner_occupied_pct": 20.57,
+    "median_home_value": 296600,
+    "median_rent": 1748
+  },
+  "76133": {
+    "median_income": 75523,
+    "population": 53958,
+    "bachelors_pct": 30.6,
+    "poverty_pct": 13.04,
+    "owner_occupied_pct": 62.05,
+    "median_home_value": 238900,
+    "median_rent": 1586
+  },
+  "76107": {
+    "median_income": 79990,
+    "population": 30994,
+    "bachelors_pct": 57.95,
+    "poverty_pct": 11.7,
+    "owner_occupied_pct": 44.08,
+    "median_home_value": 431200,
+    "median_rent": 1609
+  },
+  "76103": {
+    "median_income": 60172,
+    "population": 15975,
+    "bachelors_pct": 19.15,
+    "poverty_pct": 16.24,
+    "owner_occupied_pct": 61.52,
+    "median_home_value": 205000,
+    "median_rent": 1212
+  },
+  "76111": {
+    "median_income": 60194,
+    "population": 20989,
+    "bachelors_pct": 16.49,
+    "poverty_pct": 13.57,
+    "owner_occupied_pct": 56.73,
+    "median_home_value": 216400,
+    "median_rent": 1391
+  },
+  "76109": {
+    "median_income": 100507,
+    "population": 26006,
+    "bachelors_pct": 70.5,
+    "poverty_pct": 12.36,
+    "owner_occupied_pct": 52.52,
+    "median_home_value": 630800,
+    "median_rent": 1770
+  },
+  "76108": {
+    "median_income": 80412,
+    "population": 45537,
+    "bachelors_pct": 26.86,
+    "poverty_pct": 8.8,
+    "owner_occupied_pct": 70.61,
+    "median_home_value": 253700,
+    "median_rent": 1517
+  },
+  "76244": {
+    "median_income": 122217,
+    "population": 76728,
+    "bachelors_pct": 45.59,
+    "poverty_pct": 6.5,
+    "owner_occupied_pct": 68.05,
+    "median_home_value": 391200,
+    "median_rent": 2024
+  },
+  "76123": {
+    "median_income": 102768,
+    "population": 42957,
+    "bachelors_pct": 36.35,
+    "poverty_pct": 9.2,
+    "owner_occupied_pct": 76.67,
+    "median_home_value": 310500,
+    "median_rent": 2171
+  },
+  "76131": {
+    "median_income": 108694,
+    "population": 56322,
+    "bachelors_pct": 35.21,
+    "poverty_pct": 5.57,
+    "owner_occupied_pct": 73.26,
+    "median_home_value": 343100,
+    "median_rent": 1911
+  },
+  "76110": {
+    "median_income": 69790,
+    "population": 33441,
+    "bachelors_pct": 29.84,
+    "poverty_pct": 18.78,
+    "owner_occupied_pct": 62.37,
+    "median_home_value": 258000,
+    "median_rent": 1391
+  },
+  "76119": {
+    "median_income": 51267,
+    "population": 52974,
+    "bachelors_pct": 8.95,
+    "poverty_pct": 21.19,
+    "owner_occupied_pct": 54.74,
+    "median_home_value": 160400,
+    "median_rent": 1285
+  },
+  "75025": {
+    "median_income": 143260,
+    "population": 53202,
+    "bachelors_pct": 68.02,
+    "poverty_pct": 5.1,
+    "owner_occupied_pct": 66.24,
+    "median_home_value": 486100,
+    "median_rent": 2040
+  },
+  "75074": {
+    "median_income": 88697,
+    "population": 53831,
+    "bachelors_pct": 44.24,
+    "poverty_pct": 9.63,
+    "owner_occupied_pct": 53.48,
+    "median_home_value": 371000,
+    "median_rent": 1718
+  },
+  "75093": {
+    "median_income": 124563,
+    "population": 47954,
+    "bachelors_pct": 68.93,
+    "poverty_pct": 4.77,
+    "owner_occupied_pct": 59.11,
+    "median_home_value": 670500,
+    "median_rent": 1814
+  },
+  "75024": {
+    "median_income": 117088,
+    "population": 45652,
+    "bachelors_pct": 72.26,
+    "poverty_pct": 5.99,
+    "owner_occupied_pct": 37.59,
+    "median_home_value": 598600,
+    "median_rent": 1891
+  },
+  "75075": {
+    "median_income": 98365,
+    "population": 38135,
+    "bachelors_pct": 53.15,
+    "poverty_pct": 7.82,
+    "owner_occupied_pct": 61.05,
+    "median_home_value": 428000,
+    "median_rent": 1683
+  },
+  "75023": {
+    "median_income": 109660,
+    "population": 49229,
+    "bachelors_pct": 56.58,
+    "poverty_pct": 7.13,
+    "owner_occupied_pct": 64.07,
+    "median_home_value": 416500,
+    "median_rent": 1944
+  },
+  "75035": {
+    "median_income": 166590,
+    "population": 89682,
+    "bachelors_pct": 69.06,
+    "poverty_pct": 4.01,
+    "owner_occupied_pct": 76.73,
+    "median_home_value": 608900,
+    "median_rent": 2290
+  },
+  "75034": {
+    "median_income": 111122,
+    "population": 53818,
+    "bachelors_pct": 65.19,
+    "poverty_pct": 4.44,
+    "owner_occupied_pct": 38.63,
+    "median_home_value": 729700,
+    "median_rent": 1864
+  },
+  "75033": {
+    "median_income": 174762,
+    "population": 52795,
+    "bachelors_pct": 65.27,
+    "poverty_pct": 2.66,
+    "owner_occupied_pct": 69.63,
+    "median_home_value": 652100,
+    "median_rent": 2056
+  },
+  "75071": {
+    "median_income": 132447,
+    "population": 72964,
+    "bachelors_pct": 52.01,
+    "poverty_pct": 4.48,
+    "owner_occupied_pct": 74.33,
+    "median_home_value": 481400,
+    "median_rent": 2179
+  },
+  "76011": {
+    "median_income": 54038,
+    "population": 22752,
+    "bachelors_pct": 25.35,
+    "poverty_pct": 17.0,
+    "owner_occupied_pct": 17.35,
+    "median_home_value": 247300,
+    "median_rent": 1365
+  },
+  "76017": {
+    "median_income": 90083,
+    "population": 47074,
+    "bachelors_pct": 33.86,
+    "poverty_pct": 8.59,
+    "owner_occupied_pct": 65.84,
+    "median_home_value": 311600,
+    "median_rent": 1639
+  },
+  "76013": {
+    "median_income": 70471,
+    "population": 35715,
+    "bachelors_pct": 42.17,
+    "poverty_pct": 15.78,
+    "owner_occupied_pct": 53.27,
+    "median_home_value": 310400,
+    "median_rent": 1310
+  },
+  "76010": {
+    "median_income": 45466,
+    "population": 54978,
+    "bachelors_pct": 13.09,
+    "poverty_pct": 23.67,
+    "owner_occupied_pct": 31.27,
+    "median_home_value": 217800,
+    "median_rent": 1280
+  },
+  "76016": {
+    "median_income": 108885,
+    "population": 31280,
+    "bachelors_pct": 43.9,
+    "poverty_pct": 4.81,
+    "owner_occupied_pct": 83.63,
+    "median_home_value": 334500,
+    "median_rent": 1797
+  },
+  "76001": {
+    "median_income": 105311,
+    "population": 38913,
+    "bachelors_pct": 41.15,
+    "poverty_pct": 9.07,
+    "owner_occupied_pct": 75.66,
+    "median_home_value": 352700,
+    "median_rent": 1879
+  },
+  "76014": {
+    "median_income": 60333,
+    "population": 32818,
+    "bachelors_pct": 17.6,
+    "poverty_pct": 18.75,
+    "owner_occupied_pct": 40.15,
+    "median_home_value": 234600,
+    "median_rent": 1613
+  },
+  "76018": {
+    "median_income": 88288,
+    "population": 26834,
+    "bachelors_pct": 27.88,
+    "poverty_pct": 10.26,
+    "owner_occupied_pct": 76.42,
+    "median_home_value": 265100,
+    "median_rent": 1982
+  },
+  "76005": {
+    "median_income": 168806,
+    "population": 7102,
+    "bachelors_pct": 68.61,
+    "poverty_pct": 3.68,
+    "owner_occupied_pct": 80.11,
+    "median_home_value": 523400,
+    "median_rent": 3081
+  },
+  "76002": {
+    "median_income": 100667,
+    "population": 35265,
+    "bachelors_pct": 37.32,
+    "poverty_pct": 7.62,
+    "owner_occupied_pct": 80.47,
+    "median_home_value": 339100,
+    "median_rent": 2126
+  },
+  "76012": {
+    "median_income": 88141,
+    "population": 27991,
+    "bachelors_pct": 42.35,
+    "poverty_pct": 14.12,
+    "owner_occupied_pct": 66.96,
+    "median_home_value": 334600,
+    "median_rent": 1442
+  },
+  "75060": {
+    "median_income": 71575,
+    "population": 47591,
+    "bachelors_pct": 18.71,
+    "poverty_pct": 14.29,
+    "owner_occupied_pct": 64.86,
+    "median_home_value": 249800,
+    "median_rent": 1449
+  },
+  "75063": {
+    "median_income": 117133,
+    "population": 45849,
+    "bachelors_pct": 75.07,
+    "poverty_pct": 6.32,
+    "owner_occupied_pct": 37.69,
+    "median_home_value": 559900,
+    "median_rent": 1785
+  },
+  "75062": {
+    "median_income": 72704,
+    "population": 52116,
+    "bachelors_pct": 35.17,
+    "poverty_pct": 9.05,
+    "owner_occupied_pct": 45.42,
+    "median_home_value": 273600,
+    "median_rent": 1478
+  },
+  "75038": {
+    "median_income": 68990,
+    "population": 32755,
+    "bachelors_pct": 46.96,
+    "poverty_pct": 12.18,
+    "owner_occupied_pct": 19.6,
+    "median_home_value": 408000,
+    "median_rent": 1506
+  },
+  "75061": {
+    "median_income": 63798,
+    "population": 56013,
+    "bachelors_pct": 18.31,
+    "poverty_pct": 16.11,
+    "owner_occupied_pct": 41.03,
+    "median_home_value": 257800,
+    "median_rent": 1382
+  },
+  "75039": {
+    "median_income": 104853,
+    "population": 24164,
+    "bachelors_pct": 75.57,
+    "poverty_pct": 5.64,
+    "owner_occupied_pct": 15.63,
+    "median_home_value": 597800,
+    "median_rent": 1917
+  },
+  "75043": {
+    "median_income": 76778,
+    "population": 63152,
+    "bachelors_pct": 23.89,
+    "poverty_pct": 12.08,
+    "owner_occupied_pct": 62.19,
+    "median_home_value": 269400,
+    "median_rent": 1609
+  },
+  "75040": {
+    "median_income": 74519,
+    "population": 64606,
+    "bachelors_pct": 24.3,
+    "poverty_pct": 9.87,
+    "owner_occupied_pct": 66.77,
+    "median_home_value": 266300,
+    "median_rent": 1728
+  },
+  "75044": {
+    "median_income": 92178,
+    "population": 47529,
+    "bachelors_pct": 41.68,
+    "poverty_pct": 10.37,
+    "owner_occupied_pct": 58.89,
+    "median_home_value": 344300,
+    "median_rent": 1810
+  },
+  "75042": {
+    "median_income": 64266,
+    "population": 38112,
+    "bachelors_pct": 16.63,
+    "poverty_pct": 17.3,
+    "owner_occupied_pct": 58.48,
+    "median_home_value": 240200,
+    "median_rent": 1388
+  },
+  "75041": {
+    "median_income": 70308,
+    "population": 32943,
+    "bachelors_pct": 14.36,
+    "poverty_pct": 20.07,
+    "owner_occupied_pct": 58.83,
+    "median_home_value": 232100,
+    "median_rent": 1441
+  },
+  "76205": {
+    "median_income": 68600,
+    "population": 18978,
+    "bachelors_pct": 41.42,
+    "poverty_pct": 14.26,
+    "owner_occupied_pct": 41.68,
+    "median_home_value": 335600,
+    "median_rent": 1423
+  },
+  "76209": {
+    "median_income": 75069,
+    "population": 27982,
+    "bachelors_pct": 37.9,
+    "poverty_pct": 16.42,
+    "owner_occupied_pct": 46.23,
+    "median_home_value": 274300,
+    "median_rent": 1444
+  },
+  "76249": {
+    "median_income": 120169,
+    "population": 10637,
+    "bachelors_pct": 33.59,
+    "poverty_pct": 5.1,
+    "owner_occupied_pct": 81.58,
+    "median_home_value": 356000,
+    "median_rent": 1943
+  },
+  "76210": {
+    "median_income": 113980,
+    "population": 47610,
+    "bachelors_pct": 43.52,
+    "poverty_pct": 6.09,
+    "owner_occupied_pct": 75.78,
+    "median_home_value": 376000,
+    "median_rent": 1910
+  },
+  "76208": {
+    "median_income": 88967,
+    "population": 30025,
+    "bachelors_pct": 35.48,
+    "poverty_pct": 10.67,
+    "owner_occupied_pct": 66.74,
+    "median_home_value": 369100,
+    "median_rent": 1669
+  },
+  "76207": {
+    "median_income": 85330,
+    "population": 19862,
+    "bachelors_pct": 45.66,
+    "poverty_pct": 13.96,
+    "owner_occupied_pct": 63.74,
+    "median_home_value": 390900,
+    "median_rent": 1769
+  },
+  "76226": {
+    "median_income": 180982,
+    "population": 43587,
+    "bachelors_pct": 65.61,
+    "poverty_pct": 1.49,
+    "owner_occupied_pct": 93.63,
+    "median_home_value": 606100,
+    "median_rent": 3090
+  },
+  "76201": {
+    "median_income": 39982,
+    "population": 31143,
+    "bachelors_pct": 45.74,
+    "poverty_pct": 31.96,
+    "owner_occupied_pct": 19.0,
+    "median_home_value": 257700,
+    "median_rent": 1164
+  },
+  "75002": {
+    "median_income": 137037,
+    "population": 75057,
+    "bachelors_pct": 52.45,
+    "poverty_pct": 6.42,
+    "owner_occupied_pct": 78.44,
+    "median_home_value": 447800,
+    "median_rent": 2095
+  },
+  "75013": {
+    "median_income": 146891,
+    "population": 49796,
+    "bachelors_pct": 66.63,
+    "poverty_pct": 4.66,
+    "owner_occupied_pct": 63.62,
+    "median_home_value": 590700,
+    "median_rent": 1825
+  }
+}
