@@ -1,7 +1,7 @@
 import json
 
-PROPERTY_FILE = "dfw_single_family_claude_compact.json"
-ZIP_FILE = "zip_metrics.json"
+PROPERTY_FILE = "data/processed/dfw_single_family_claude_compact.json"
+ZIP_FILE = "data/processed/zip_metrics.json"
 
 # Overwrite compact file directly
 OUTPUT_FILE = PROPERTY_FILE

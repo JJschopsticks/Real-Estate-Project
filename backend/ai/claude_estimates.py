@@ -12,8 +12,8 @@ MODEL = "claude-sonnet-4-6"
 
 BATCH_SIZE = 25
 
-INPUT_FILE = "dfw_single_family_claude_compact.json"
-OUTPUT_FILE = "properties_with_estimates.json"
+INPUT_FILE = "data/processed/dfw_single_family_claude_compact.json"
+OUTPUT_FILE = "data/processed/properties_with_estimates.json"
 
 INPUT_COST_PER_MILLION = 3.00
 OUTPUT_COST_PER_MILLION = 15.00

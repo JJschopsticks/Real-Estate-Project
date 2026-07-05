@@ -179,7 +179,7 @@ if __name__ == "__main__":
 
     print(f"\n✅ Total properties collected: {len(results)}")
 
-    with open("dfw_properties.json", "w", encoding="utf-8") as f:
+    with open("data/raw/dfw_properties.json", "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
 
     print("Saved to dfw_properties.json ✅")

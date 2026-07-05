@@ -12,7 +12,7 @@ if not API_KEY:
         "CENSUS_API_KEY not found in .env file"
     )
 
-ZIP_FILE = "zip_metrics.json"
+ZIP_FILE = "data/processed/zip_metrics.json"
 
 # ACS 2024 5-Year variables
 ACS_VARS = {
