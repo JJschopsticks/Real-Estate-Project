@@ -1,7 +1,7 @@
 import json
 
-INPUT_FILE = "data/processed/properties_with_estimates.json"
-OUTPUT_FILE = "data/processedzip_metrics.json"
+INPUT_FILE = "../../data/processed/properties_with_estimates.json"
+OUTPUT_FILE = "../../data/processedzip_metrics.json"
 
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
     properties = json.load(f)

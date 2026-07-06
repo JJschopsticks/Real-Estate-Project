@@ -1,7 +1,7 @@
 import json
 
-INPUT_FILE = "data/processed/properties_with_estimates.json"
-OUTPUT_FILE = "data/processed/properties_with_estimates_readable.json"
+INPUT_FILE = "../../data/processed/properties_with_estimates.json"
+OUTPUT_FILE = "../../data/processed/properties_with_estimates_readable.json"
 
 FIELD_MAP = {
     "c": "city",

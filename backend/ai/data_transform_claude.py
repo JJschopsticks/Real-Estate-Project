@@ -1,7 +1,7 @@
 import json
 
-INPUT_FILE = "data/raw/dfw_properties.json"
-OUTPUT_FILE = "data/processed/dfw_single_family_claude_compact.json"
+INPUT_FILE = "../../data/raw/dfw_properties.json"
+OUTPUT_FILE = "../../data/processed/dfw_single_family_claude_compact.json"
 
 # Short field names to reduce token usage
 LEGEND = {

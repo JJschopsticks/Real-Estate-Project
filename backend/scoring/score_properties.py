@@ -1,4 +1,5 @@
 import json
+import math
 import pandas as pd
 from datetime import datetime
 from pathlib import Path
@@ -440,6 +441,16 @@ results = df.to_dict(
     orient="records"
 )
 
+# Replace NaN values with None
+for row in results:
+    for k, v in row.items():
+
+        if isinstance(v, float):
+
+            if math.isnan(v):
+
+                row[k] = None
+
 with open(
     OUTPUT_FILE,
     "w",
@@ -448,7 +459,8 @@ with open(
     json.dump(
         results,
         f,
-        indent=2
+        indent=2,
+        allow_nan=False
     )
 
 print(f"\nSaved: {OUTPUT_FILE}")
