@@ -7,9 +7,28 @@ import type { Property } from "../types/Property";
 
 import PropertyModal from "../components/PropertyModal";
 import StatsCards from "../components/StatsCards";
-import CityChart from "../components/CityChart";
+import ImpactBarChart from "../components/ImpactBarChart";
+import type { ImpactBin } from "../components/ImpactBarChart";
 
 Modal.setAppElement("#root");
+
+const INCOME_BINS: ImpactBin[] = [
+  { label: "<$60K", min: 0, max: 60000 },
+  { label: "$60K-$80K", min: 60000, max: 80000 },
+  { label: "$80K-$100K", min: 80000, max: 100000 },
+  { label: "$100K-$120K", min: 100000, max: 120000 },
+  { label: "$120K-$150K", min: 120000, max: 150000 },
+  { label: "$150K+", min: 150000, max: Infinity },
+];
+
+const SQFT_BINS: ImpactBin[] = [
+  { label: "<1,500 sqft", min: 0, max: 1500 },
+  { label: "1,500-2,000", min: 1500, max: 2000 },
+  { label: "2,000-2,500", min: 2000, max: 2500 },
+  { label: "2,500-3,000", min: 2500, max: 3000 },
+  { label: "3,000-4,000", min: 3000, max: 4000 },
+  { label: "4,000+ sqft", min: 4000, max: Infinity },
+];
 
 export default function Dashboard() {
   const [properties, setProperties] =
@@ -92,8 +111,6 @@ export default function Dashboard() {
       (sum, p) => sum + p.roi_pct,
       0
     ) / properties.length;
-
-  const topProperty = properties[0];
 
   const cities = [
     "All",
@@ -259,109 +276,6 @@ export default function Dashboard() {
 
       </div>
 
-      <div className="grid grid-cols-2 gap-6 mb-8">
-
-        <div
-          className="
-            bg-white
-            rounded-xl
-            shadow-lg
-            p-6
-            border-l-8
-            border-yellow-500
-          "
-        >
-
-          <h2
-            className="
-              text-2xl
-              font-bold
-              mb-4
-            "
-          >
-            🏆 Best Investment Opportunity
-          </h2>
-
-          <p
-            className="
-              text-lg
-              font-semibold
-              mb-4
-            "
-          >
-            {topProperty.id.replaceAll(
-              "-",
-              " "
-            )}
-          </p>
-
-          <div
-            className="
-              grid
-              grid-cols-2
-              gap-4
-            "
-          >
-
-            <div>
-
-              <p className="text-gray-500">
-                Price
-              </p>
-
-              <p className="font-bold">
-                $
-                {topProperty.listing_price.toLocaleString()}
-              </p>
-
-            </div>
-
-            <div>
-
-              <p className="text-gray-500">
-                ROI
-              </p>
-
-              <p className="font-bold text-green-600">
-                {topProperty.roi_pct}%
-              </p>
-
-            </div>
-
-            <div>
-
-              <p className="text-gray-500">
-                Appreciation
-              </p>
-
-              <p className="font-bold">
-                {topProperty.five_year_appreciation_pct}%
-              </p>
-
-            </div>
-
-            <div>
-
-              <p className="text-gray-500">
-                Score
-              </p>
-
-              <p className="font-bold text-blue-700">
-                {topProperty.investment_score}
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <CityChart
-          properties={filteredProperties}
-        />
-
-      </div>
-
       <h3 className="text-xl mb-2">
         Showing Top 10 of {filteredProperties.length}
         Matching Properties
@@ -506,6 +420,26 @@ export default function Dashboard() {
           </tbody>
 
         </table>
+
+      </div>
+
+      <div className="grid grid-cols-2 gap-6 mt-8">
+
+        <ImpactBarChart
+          title="ROI by Neighborhood Median Income"
+          description="Average ROI for properties grouped by their neighborhood's median household income — the strongest neighborhood-level factor in the data."
+          properties={filteredProperties}
+          field="median_income"
+          bins={INCOME_BINS}
+        />
+
+        <ImpactBarChart
+          title="ROI by Square Footage"
+          description="Average ROI for properties grouped by size — the strongest property-level factor in the data."
+          properties={filteredProperties}
+          field="square_feet"
+          bins={SQFT_BINS}
+        />
 
       </div>
 
