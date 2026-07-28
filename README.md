@@ -2,6 +2,11 @@
 
 A tool for finding and ranking investment properties in the Dallas-Fort Worth (DFW) metro area. It pulls active listings, enriches them with neighborhood demographic data, uses Claude to estimate rent and appreciation, then scores and ranks every property so the best opportunities rise to the top all viewable in a web dashboard.
 
+<img width="2832" height="1466" alt="RealEstateDashboard" src="https://github.com/user-attachments/assets/eec8e6a7-5c4d-43aa-aad1-3f45616a48f0" />
+<img width="2796" height="1022" alt="RealEstateGraphs" src="https://github.com/user-attachments/assets/75cbd530-7dab-4d94-8386-a80722900423" />
+
+
+
 # How it works
 
 The pipeline runs in a few stages:
