@@ -15,6 +15,11 @@ separating the schema strictly by data provenance and bringing in independent,
 real historical performance data (Zillow ZHVI) see **Key Findings** and
 **Data Integrity** below.
 
+# PowerBI Analysis Dashboard
+<img width="2220" height="1250" alt="RealEstatePowerBI1" src="https://github.com/user-attachments/assets/ee4ed274-8d82-4981-9fbf-89525ad433e2" />
+<img width="2216" height="1248" alt="RealEstatePowerBI2" src="https://github.com/user-attachments/assets/9484182e-ee5e-45f2-8e01-ea9032299077" />
+
+# React Dashboard
 <img width="2832" height="1466" alt="RealEstateDashboard" src="https://github.com/user-attachments/assets/eec8e6a7-5c4d-43aa-aad1-3f45616a48f0" />
 <img width="2796" height="1022" alt="RealEstateGraphs" src="https://github.com/user-attachments/assets/75cbd530-7dab-4d94-8386-a80722900423" />
 
