@@ -21,10 +21,15 @@ FIELD_MAP = {
     "oop": "owner_occupied_pct",
     "mhv": "median_home_value",
     "mr": "median_rent",
+    "za5": "actual_zip_appreciation_5yr_pct",
+    "za1": "actual_zip_appreciation_1yr_pct",
 
     "r": "estimated_rent",
     "conf": "confidence_score",
-    "a": "five_year_appreciation_pct",
+    # Claude-estimated, NOT observed data. See FIELD_PROVENANCE in
+    # backend/scoring/field_provenance.py — kept distinct from
+    # actual_zip_appreciation_5yr_pct, which is real ZHVI history.
+    "a": "ai_estimated_appreciation_pct",
     "v": "estimated_value_5yr"
 }
 

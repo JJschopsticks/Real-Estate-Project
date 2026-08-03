@@ -4,6 +4,8 @@ import pandas as pd
 from datetime import datetime
 from pathlib import Path
 
+from field_provenance import FIELD_PROVENANCE  # noqa: F401 — see docstrings below
+
 CURRENT_YEAR = datetime.now().year
 
 # ==================================================
@@ -104,6 +106,16 @@ df["age"] = (
 
 # ==================================================
 # ROI CALCULATIONS
+#
+# roi_pct and future_equity_gain are AI-derived: they're built from
+# estimated_rent / estimated_value_5yr, which Claude produced from a prompt
+# that explicitly factored in ZIP demographics (median_income,
+# bachelors_pct, poverty_pct, owner_occupied_pct). Correlating roi_pct
+# against those demographics measures "did the LLM follow instructions,"
+# not a real market relationship. See FIELD_PROVENANCE in
+# field_provenance.py and backend/scoring/correlation_guard.py, and use
+# actual_zip_appreciation_5yr_pct (real ZHVI history) for that kind of
+# analysis instead.
 # ==================================================
 
 monthly_rate = INTEREST_RATE / 12
@@ -239,6 +251,17 @@ def inverse_percentile_score(series):
 
 # ==================================================
 # SCORES
+#
+# Every *_score and *_total_score below (and investment_score at the end)
+# is composite/derived: a percentile rank or weighted sum, not observed
+# data. income_score, education_score, poverty_score, and owner_occ_score
+# are built directly from the same demographic fields
+# (median_income/bachelors_pct/poverty_pct/owner_occupied_pct) that fed the
+# Claude prompt in claude_estimates.py — so investment_score (or
+# neighborhood_score) correlated against those demographics is circular by
+# construction, twice over. Check FIELD_PROVENANCE in field_provenance.py
+# before running any correlation against these fields; use
+# correlation_guard.assert_valid_correlation_pair() to enforce it.
 # ==================================================
 
 df["yield_score"] = percentile_score(
@@ -262,7 +285,7 @@ df["roi_score"] = percentile_score(
 )
 
 df["appreciation_score"] = percentile_score(
-    df["five_year_appreciation_pct"]
+    df["ai_estimated_appreciation_pct"]
 )
 
 df["equity_gain_score"] = percentile_score(
@@ -420,7 +443,7 @@ df["investment_grade"] = df[
 # ROUND
 # ==================================================
 
-for col in [
+round_cols = [
     "roi_pct",
     "gross_yield",
     "future_equity_gain",
@@ -430,7 +453,18 @@ for col in [
     "property_quality_score",
     "market_score",
     "investment_score"
+]
+
+# Present only once backend/enrichment/zhvi_ingestion.py has been run and
+# merged in — guard so scoring an older readable file doesn't break.
+for optional_col in [
+    "actual_zip_appreciation_5yr_pct",
+    "actual_zip_appreciation_1yr_pct",
 ]:
+    if optional_col in df.columns:
+        round_cols.append(optional_col)
+
+for col in round_cols:
     df[col] = df[col].round(2)
 
 # ==================================================

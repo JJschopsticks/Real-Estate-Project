@@ -1,7 +1,14 @@
 import json
+import os
 
 PROPERTY_FILE = "../../data/processed/dfw_single_family_claude_compact.json"
 ZIP_FILE = "../../data/processed/zip_metrics.json"
+
+# Real, observed ZHVI appreciation (backend/enrichment/zhvi_ingestion.py).
+# Distinct from the Claude-estimated appreciation added later by
+# backend/ai/claude_estimates.py — see FIELD_PROVENANCE in
+# backend/scoring/field_provenance.py.
+ZHVI_FILE = "../../data/processed/zip_historical_appreciation.json"
 
 # Overwrite compact file directly
 OUTPUT_FILE = PROPERTY_FILE
@@ -16,6 +23,18 @@ with open(PROPERTY_FILE, "r", encoding="utf-8") as f:
 with open(ZIP_FILE, "r", encoding="utf-8") as f:
     zip_metrics = json.load(f)
 
+zhvi_metrics = {}
+
+if os.path.exists(ZHVI_FILE):
+    with open(ZHVI_FILE, "r", encoding="utf-8") as f:
+        zhvi_metrics = json.load(f)
+else:
+    print(
+        f"WARNING: {ZHVI_FILE} not found — run "
+        "backend/enrichment/zhvi_ingestion.py first. "
+        "Skipping real appreciation merge for now."
+    )
+
 # ----------------------------------
 # UPDATE LEGEND
 # ----------------------------------
@@ -27,7 +46,9 @@ property_data["legend"].update({
     "pp": "poverty_pct",
     "oop": "owner_occupied_pct",
     "mhv": "median_home_value",
-    "mr": "median_rent"
+    "mr": "median_rent",
+    "za5": "actual_zip_appreciation_5yr_pct",
+    "za1": "actual_zip_appreciation_1yr_pct"
 })
 
 properties = property_data["properties"]
@@ -58,6 +79,12 @@ for prop in properties:
     prop["oop"] = metrics.get("owner_occupied_pct")
     prop["mhv"] = metrics.get("median_home_value")
     prop["mr"] = metrics.get("median_rent")
+
+    zhvi = zhvi_metrics.get(zip_code)
+
+    if zhvi:
+        prop["za5"] = zhvi.get("appreciation_5yr_pct_actual")
+        prop["za1"] = zhvi.get("appreciation_1yr_pct_actual")
 
     updated_count += 1
 
