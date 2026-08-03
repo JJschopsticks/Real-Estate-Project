@@ -11,6 +11,8 @@ __pycache__/
 # Data
 *.json
 data/**/*.json
+*.csv
+data/raw
 
 # User-specific files
 *.rsuser
