@@ -96,10 +96,25 @@ def build_database():
     for table in TABLES_IN_LOAD_ORDER:
         cur.execute(f"TRUNCATE TABLE {table} CASCADE")
 
+    # Load the scored (filtered, deduplicated Single Family) properties first
+    # so raw_properties can be restricted to the same id set — otherwise
+    # raw_properties ends up with rows that have no matching ai_estimates /
+    # computed_scores row, breaking the intended 1-to-1 relationship.
+    scored = load_json(SCORED_PROPERTIES_FILE)
+    scored_ids = {p.get("id") for p in scored} if scored else set()
+
     # ---- raw_properties ----
     raw = load_json(RAW_PROPERTIES_FILE)
     if raw:
         properties = raw.get("properties", raw) if isinstance(raw, dict) else raw
+
+        filtered_properties = [p for p in properties if p.get("id") in scored_ids]
+        print(
+            f"Filtered raw_properties: {len(properties)} -> "
+            f"{len(filtered_properties)} "
+            f"({len(properties) - len(filtered_properties)} rows dropped, "
+            "not in scored set)"
+        )
 
         rows = [
             (
@@ -113,7 +128,7 @@ def build_database():
                 bool(p.get("pool")), bool(p.get("fireplace")),
                 bool(p.get("heating")), bool(p.get("cooling")),
             )
-            for p in properties
+            for p in filtered_properties
         ]
 
         cur.executemany(
@@ -182,7 +197,6 @@ def build_database():
         print(f"Loaded {len(rows)} rows into zip_historical_performance")
 
     # ---- ai_estimates + computed_scores ----
-    scored = load_json(SCORED_PROPERTIES_FILE)
     if scored:
         ai_rows = [
             (p.get("id"), *(p.get(f) for f in AI_ESTIMATE_FIELDS))
